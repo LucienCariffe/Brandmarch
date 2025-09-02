@@ -91,8 +91,7 @@ export default function PaymentForm({ amount, onPaymentSuccess, onPaymentComplet
 
       const { data: { user } } = await supabase.auth.getUser();
       
-      console.log('Current user:', user);
-      
+
       if (!user) {
         alert('You must be logged in to make a payment');
         setIsProcessing(false);
@@ -110,11 +109,6 @@ export default function PaymentForm({ amount, onPaymentSuccess, onPaymentComplet
         stripe_session_id: `mock-session-${Date.now()}`, 
         created_at: new Date().toISOString()
       };
-      
-      console.log('Attempting to insert payment data:', paymentData);
-      console.log('User ID from auth:', user.id);
-      console.log('auth.uid() should match user_id:', user.id);
-      
 
       const { error } = await supabase.from("payments").insert([paymentData]);
 
@@ -122,9 +116,6 @@ export default function PaymentForm({ amount, onPaymentSuccess, onPaymentComplet
         console.error('Payment storage error:', error);
         console.error('Error details:', {
           message: error.message,
-          details: error.details,
-          hint: error.hint,
-          code: error.code
         });
         alert(`Payment processed but there was an error storing the record: ${error.message || 'Unknown error'}`);
         setIsProcessing(false);
