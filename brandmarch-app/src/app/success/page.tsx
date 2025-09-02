@@ -80,7 +80,7 @@ export default function SuccessPage() {
         }}
       >
         <Container maxWidth="sm">
-          {/* Header */}
+    
           <Box textAlign="center" mb={4}>
             <Avatar
               sx={{
@@ -101,7 +101,7 @@ export default function SuccessPage() {
             </Typography>
           </Box>
 
-          {/* Success Content */}
+              
           <Paper elevation={3} sx={{ p: 4, textAlign: 'center' }}>
             <CheckCircleIcon 
               sx={{ 
@@ -126,7 +126,7 @@ export default function SuccessPage() {
     
           </Paper>
 
-          {/* Footer */}
+    
           <Box textAlign="center" mt={4}>
             <Typography variant="body2" color="text.secondary">
               © 2024 Brand March. All rights reserved.

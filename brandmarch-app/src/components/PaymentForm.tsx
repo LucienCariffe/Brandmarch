@@ -43,7 +43,7 @@ export default function PaymentForm({ amount, onPaymentSuccess, onPaymentComplet
       [name]: value
     }));
     
-    // Clear error when user starts typing
+
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
@@ -88,7 +88,7 @@ export default function PaymentForm({ amount, onPaymentSuccess, onPaymentComplet
     setIsProcessing(true);
     
     try {
-      // Get current user
+
       const { data: { user } } = await supabase.auth.getUser();
       
       console.log('Current user:', user);
@@ -99,15 +99,15 @@ export default function PaymentForm({ amount, onPaymentSuccess, onPaymentComplet
         return;
       }
 
-      // Convert amount string to number (remove $ and convert to cents)
+
       const amountInCents = Math.round(parseFloat(amount.replace('$', '')) * 100);
       
-      // Prepare payment data
+
       const paymentData = {
         user_id: user.id,
-        amount: amountInCents, // Store in cents
+        amount: amountInCents, 
         status: "success",
-        stripe_session_id: `mock-session-${Date.now()}`, // Generate unique mock session ID
+        stripe_session_id: `mock-session-${Date.now()}`, 
         created_at: new Date().toISOString()
       };
       
@@ -115,7 +115,7 @@ export default function PaymentForm({ amount, onPaymentSuccess, onPaymentComplet
       console.log('User ID from auth:', user.id);
       console.log('auth.uid() should match user_id:', user.id);
       
-      // Store payment in Supabase
+
       const { error } = await supabase.from("payments").insert([paymentData]);
 
       if (error) {
@@ -131,7 +131,6 @@ export default function PaymentForm({ amount, onPaymentSuccess, onPaymentComplet
         return;
       }
 
-      // Payment successful
       if (onPaymentComplete) {
         onPaymentComplete();
       } else if (onPaymentSuccess) {
@@ -167,7 +166,7 @@ export default function PaymentForm({ amount, onPaymentSuccess, onPaymentComplet
   return (
     <Card elevation={3}>
       <CardContent sx={{ p: 4 }}>
-        {/* Amount Display */}
+
         <Box textAlign="center" mb={4}>
           <Typography variant="h3" color="primary" gutterBottom>
             ${amount}
@@ -178,7 +177,7 @@ export default function PaymentForm({ amount, onPaymentSuccess, onPaymentComplet
         </Box>
 
         <form onSubmit={handleSubmit}>
-          {/* Card Number */}
+
           <TextField
             fullWidth
             name="cardNumber"
@@ -197,7 +196,7 @@ export default function PaymentForm({ amount, onPaymentSuccess, onPaymentComplet
           />
           
 
-          {/* Cardholder Name */}
+
           <TextField
             fullWidth
             
@@ -210,7 +209,7 @@ export default function PaymentForm({ amount, onPaymentSuccess, onPaymentComplet
             sx={{ mb: 3 }}
           />
 
-          {/* Expiry and CVV */}
+
           <Box sx={{ display: 'flex', gap: 2, mb: 3 }}>
             <TextField
               fullWidth
@@ -242,7 +241,7 @@ export default function PaymentForm({ amount, onPaymentSuccess, onPaymentComplet
             />
           </Box>
 
-          {/* Submit Button */}
+
           <Button
             type="submit"
             variant="contained"
@@ -262,7 +261,7 @@ export default function PaymentForm({ amount, onPaymentSuccess, onPaymentComplet
 
         <Divider sx={{ my: 3 }} />
 
-        {/* Security Notice */}
+
         <Box textAlign="center">
           <Alert 
             icon={<SecurityIcon />} 

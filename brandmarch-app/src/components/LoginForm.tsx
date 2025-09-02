@@ -7,8 +7,6 @@ import {
   TextField,
   Button,
   Typography,
-  Box,
-  Link,
   Alert,
   InputAdornment,
   IconButton
@@ -42,7 +40,6 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
       [name]: value
     }));
     
-    // Clear error when user starts typing
     if (error) {
       setError('');
     }
@@ -71,7 +68,6 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
       });
 
       if (authError) {
-        // Handle specific Supabase auth errors
         switch (authError.message) {
           case 'Invalid login credentials':
             setError('Invalid email or password. Please try again.');
@@ -89,7 +85,6 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
       }
 
       if (data.user) {
-        // Successfully logged in
         if (onLoginSuccess) {
           onLoginSuccess();
         }
@@ -124,7 +119,7 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
         )}
 
         <form onSubmit={handleSubmit}>
-          {/* Email Field */}
+
           <TextField
             fullWidth
             label="Email Address"
@@ -143,7 +138,6 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
             sx={{ mb: 3 }}
           />
 
-          {/* Password Field */}
           <TextField
             fullWidth
             label="Password"
@@ -173,7 +167,6 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
             sx={{ mb: 3 }}
           />
 
-          {/* Submit Button */}
           <Button
             type="submit"
             variant="contained"
@@ -191,37 +184,7 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
           </Button>
         </form>
 
-        {/* Forgot Password & Sign Up Links */}
-        <Box textAlign="center">
-          <Link
-            href="#"
-            variant="body2"
-            color="primary"
-            sx={{ 
-              textDecoration: 'none',
-              '&:hover': { textDecoration: 'underline' }
-            }}
-          >
-            Forgot your password?
-          </Link>
-          
-          <Box sx={{ mt: 2 }}>
-            <Typography variant="body2" color="text.secondary" component="span">
-              Don't have an account?{' '}
-            </Typography>
-            <Link
-              href="#"
-              variant="body2"
-              color="primary"
-              sx={{ 
-                textDecoration: 'none',
-                '&:hover': { textDecoration: 'underline' }
-              }}
-            >
-              Sign up here
-            </Link>
-          </Box>
-        </Box>
+
       </CardContent>
     </Card>
   );

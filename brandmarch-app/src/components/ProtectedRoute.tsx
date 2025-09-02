@@ -15,12 +15,12 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
 
   useEffect(() => {
     if (!loading && !user) {
-      // Redirect to login page if not authenticated
+      
       router.push('/');
     }
   }, [user, loading, router]);
 
-  // Show loading spinner while checking authentication
+
   if (loading) {
     return (
       <Box
@@ -42,11 +42,10 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
     );
   }
 
-  // Show nothing while redirecting
   if (!user) {
     return null;
   }
 
-  // Render protected content if authenticated
+
   return <>{children}</>;
 }

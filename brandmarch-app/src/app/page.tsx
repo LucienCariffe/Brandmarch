@@ -20,7 +20,7 @@ export default function Home() {
   const router = useRouter();
   const { user, loading } = useAuth();
 
-  // Redirect authenticated users to payment page
+  
   useEffect(() => {
     if (!loading && user) {
       router.push('/payment');
@@ -28,11 +28,11 @@ export default function Home() {
   }, [user, loading, router]);
 
   const handleLoginSuccess = () => {
-    // Redirect to payment page after successful login
+    
     router.push('/payment');
   };
 
-  // Show loading while checking authentication
+  
   if (loading) {
     return (
       <Box
@@ -53,7 +53,7 @@ export default function Home() {
     );
   }
 
-  // Don't render login form if user is already authenticated
+
   if (user) {
     return null;
   }
@@ -70,7 +70,7 @@ export default function Home() {
       }}
     >
       <Container maxWidth="sm">
-        {/* Header */}
+        
         <Box textAlign="center" mb={4}>
           <Avatar
             sx={{
@@ -97,10 +97,10 @@ export default function Home() {
           
         </Box>
 
-        {/* Login Form Component */}
+        
         <LoginForm onLoginSuccess={handleLoginSuccess} />
 
-        {/* Footer */}
+        
         <Box textAlign="center" mt={4}>
           <Typography variant="body2" color="text.secondary">
             © 2024 Brand March. All rights reserved.

@@ -17,7 +17,7 @@ export default function PaymentPage() {
   };
 
   const handlePaymentComplete = () => {
-    // Redirect to success page
+    
     router.push('/success');
   };
 
@@ -33,7 +33,7 @@ export default function PaymentPage() {
         return;
       }
       
-      // Redirect to login page after successful sign out
+      
       router.push('/');
     } catch (err) {
       console.error('Sign out error:', err);
@@ -56,7 +56,7 @@ export default function PaymentPage() {
         }}
       >
         <Container maxWidth="sm">
-          {/* Header */}
+          
           <Box textAlign="center" mb={4}>
             <Avatar
               sx={{
@@ -73,7 +73,7 @@ export default function PaymentPage() {
               BM
             </Avatar>
             
-            {/* Sign Out Button */}
+            
             <Box sx={{ mt: 2 }}>
               <Button
                 variant="outlined"
@@ -95,14 +95,14 @@ export default function PaymentPage() {
             </Box>
           </Box>
 
-                  {/* Payment Form Component */}
+                  
         <PaymentForm 
           amount="29.99" 
           onPaymentSuccess={handlePaymentSuccess}
           onPaymentComplete={handlePaymentComplete}
         />
 
-          {/* Footer */}
+
           <Box textAlign="center" mt={4}>
             <Typography variant="body2" color="text.secondary">
               © 2024 Brand March. All rights reserved.
