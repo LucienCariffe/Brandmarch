@@ -6,7 +6,7 @@ import PaymentForm from '../../components/PaymentForm';
 import ProtectedRoute from '../../components/ProtectedRoute';
 import { Box, Typography, Avatar, Container, Button } from '@mui/material';
 import { Logout as LogoutIcon } from '@mui/icons-material';
-import { supabase } from '../../../supabaseClient';
+import { supabase } from '../../supabaseClient';
 
 export default function PaymentPage() {
   const router = useRouter();

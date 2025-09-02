@@ -17,7 +17,7 @@ import {
   Security as SecurityIcon,
   Payment as PaymentIcon
 } from '@mui/icons-material';
-import { supabase } from '../../supabaseClient';
+import { supabase } from '../supabaseClient';
 
 interface PaymentFormProps {
   amount: string;
